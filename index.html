@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    hi
+    <script>
+      function sumTo(n) {
+        if (n == 1) return 1;
+        return n + sumTo(n - 1);
+      }
+
+      function factorial(n) {
+        if (n == 1) return 1;
+        return n * factorial(n - 1);
+      }
+
+      function fibonacci(n) {
+        if (n <= 1) return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+      }
+
+      function fib2(n) {
+        let a = 1;
+        let b = 1;
+        for (let i = 3; i <= n; i++) {
+          let c = a + b;
+          a = b;
+          b = c;
+          console.log(`A: ${a}`);
+          console.log(`B: ${b}`);
+          console.log(`C: ${c}`);
+        }
+
+        return b;
+      }
+      let collatzSteps = 0;
+      function collatz(n) {
+        if (n == 1) {
+          return collatzSteps;
+        } else {
+          if (n % 2 == 0) {
+            collatzSteps++;
+            return collatz(n / 2);
+          } else {
+            collatzSteps++;
+            return collatz(3 * n + 1);
+          }
+        }
+      }
+
+      function mergeSort(array) {
+        let start = 0;
+        let end = array.length - 1;
+        if (start == end) {
+          return array;
+        } else {
+          let mid = (start + end) / 2;
+          let a = mergeSort(array.slice(start, mid + 1));
+          let b = mergeSort(array.slice(mid + 1, end + 1));
+          let c = merge(a, b);
+          return c;
+        }
+      }
+
+      function merge(a, b) {
+        let c = [];
+        let i = 0;
+        let j = 0;
+        let k = 0;
+
+        while (a[i] !== undefined && b[j] !== undefined) {
+          if (a[i] < b[j]) {
+            c.push(a[i]);
+            k++;
+            i++;
+          } else {
+            c.push(b[j]);
+            k++;
+            j++;
+          }
+        }
+
+        while (a[i] !== undefined) {
+          c.push(a[i]);
+          k++;
+          i++;
+        }
+
+        while (b[j] !== undefined) {
+          c.push(b[j]);
+          k++;
+          j++;
+        }
+
+        return c;
+      }
+
+      let array1 = [3, 1, 2];
+      let array2 = [3, 4, 2, 5, 6, 1];
+    </script>
+  </body>
+</html>
